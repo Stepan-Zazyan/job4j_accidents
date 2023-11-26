@@ -12,13 +12,13 @@ import java.util.concurrent.atomic.AtomicInteger;
 @Repository
 public class AccidentMem implements AccidentRepository {
 
-    private final AtomicInteger id = new AtomicInteger(2);
+    private final AtomicInteger id = new AtomicInteger(3);
 
     private final Map<Integer, Accident> accidents = new ConcurrentHashMap<>() {
         {
-            put(0, new Accident(0, "crash1", "text1", "address1"));
-            put(1, new Accident(1, "crash2", "text2", "address2"));
-            put(2, new Accident(2, "crash3", "text3", "address3"));
+            put(1, new Accident(1, "crash1", "text1", "address1"));
+            put(2, new Accident(2, "crash2", "text2", "address2"));
+            put(3, new Accident(3, "crash3", "text3", "address3"));
         }
     };
 

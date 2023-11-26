@@ -37,6 +37,10 @@ public class AccidentController {
     @GetMapping("/updateAccidentPage/{id}")
     public String viewUpdateAccident(Model model, @PathVariable int id) {
         Optional<Accident> accident = accidentService.findById(id);
+        if (accident.isEmpty()) {
+            model.addAttribute("message", "Инцидент не найден.");
+            return "errors/404";
+        }
         model.addAttribute("accident", accident.get());
         return "accident/updateAccident";
     }
