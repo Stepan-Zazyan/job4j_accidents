@@ -36,16 +36,22 @@
                 <th scope="col">Описание</th>
                 <th scope="col">Адрес</th>
                 <th scope="col">Тип инцидента</th>
+                <th scope="col">Нарушения</th>
             </tr>
             </thead>
             <tbody>
-            <tr th:each="accident: ${accidents}">
+            <span th:each="accident: ${accidents}">
+                <tr>
                 <td th:text="${accident.id}"/>
                 <td> <a th:text="${accident.name}" th:href="@{/accident/updateAccidentPage/{accidentId}(accidentId=${accident.id})}"></a></td>
                 <td th:text="${accident.text}"/>
                 <td th:text="${accident.address}"/>
                 <td th:text="${accident.type.name}"/>
-            </tr>
+                <span th:each="ruleName: ${accident.rules}">
+                <td th:text="${ruleName.name}"/>
+                </span>
+                </tr>
+            </span>
             </tbody>
         </table>
     </div>

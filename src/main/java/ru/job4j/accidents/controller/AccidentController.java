@@ -6,13 +6,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.job4j.accidents.model.Accident;
-import ru.job4j.accidents.model.AccidentType;
 import ru.job4j.accidents.service.AccidentService;
 import ru.job4j.accidents.service.AccidentTypeService;
+import ru.job4j.accidents.service.RuleService;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import javax.servlet.http.HttpServletRequest;
+import java.util.*;
 
 @ThreadSafe
 @AllArgsConstructor
@@ -21,22 +20,27 @@ import java.util.Optional;
 public class AccidentController {
     private final AccidentService accidentService;
     private final AccidentTypeService accidentTypeService;
+    private final RuleService ruleService;
 
     @GetMapping("/accidentListPage")
     public String viewAccidentList(Model model) {
         model.addAttribute("accidents", accidentService.findAll());
+        model.addAttribute("rules", ruleService.findAll());
         return "accident/accidentList";
     }
 
     @GetMapping("/createAccidentPage")
     public String viewCreateAccident(Model model) {
         model.addAttribute("types", accidentTypeService.findAll());
+        model.addAttribute("rules", ruleService.findAll());
         return "accident/createAccident";
     }
 
     @PostMapping("/saveAccident")
-    public String save(@ModelAttribute Accident accident) {
+    public String save(@ModelAttribute Accident accident, HttpServletRequest req) {
         accident.setType(accidentTypeService.findById(accident.getType().getId()));
+        String[] ids = req.getParameterValues("rIds");
+        accident.setRules(ruleService.getRulesByIds(ids));
         accidentService.create(accident);
         return "redirect:/accident/accidentListPage";
     }

@@ -1,21 +1,17 @@
 package ru.job4j.accidents.model;
 
-import lombok.*;
-
-import java.util.Set;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-@Getter
-@Setter
-public class Accident {
+public class Rule {
     @EqualsAndHashCode.Include
     private int id;
+
     private String name;
-    private String text;
-    private String address;
-    private AccidentType type;
-    private Set<Rule> rules;
 }
