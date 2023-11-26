@@ -46,8 +46,12 @@ public class AccidentController {
     }
 
     @PostMapping("/updateAccident")
-    public String update(@ModelAttribute Accident accident) {
-        accidentService.update(accident);
+    public String update(@ModelAttribute Accident accident, Model model) {
+        boolean rsl = accidentService.update(accident);
+        if (!rsl) {
+            model.addAttribute("message", "Инцидент не найден.");
+            return "errors/404";
+        }
         return "redirect:/accident/accidentListPage";
     }
 }
