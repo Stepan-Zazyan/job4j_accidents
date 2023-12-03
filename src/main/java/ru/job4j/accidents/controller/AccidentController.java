@@ -38,7 +38,7 @@ public class AccidentController {
 
     @PostMapping("/saveAccident")
     public String save(@ModelAttribute Accident accident, HttpServletRequest req) {
-        accident.setType(accidentTypeService.findById(accident.getType().getId()));
+        accident.setType(accidentTypeService.findById(accident.getType().getId()).get());
         String[] ids = req.getParameterValues("rIds");
         accident.setRules(ruleService.getRulesByIds(ids));
         accidentService.create(accident);

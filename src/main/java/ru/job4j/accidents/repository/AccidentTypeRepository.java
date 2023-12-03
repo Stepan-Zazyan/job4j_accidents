@@ -3,6 +3,7 @@ package ru.job4j.accidents.repository;
 import ru.job4j.accidents.model.AccidentType;
 
 import java.util.Collection;
+import java.util.Optional;
 
 public interface AccidentTypeRepository {
 
@@ -10,5 +11,5 @@ public interface AccidentTypeRepository {
 
     Collection<AccidentType> findAll();
 
-    AccidentType findById(int id);
+    Optional<AccidentType> findById(int id);
 }

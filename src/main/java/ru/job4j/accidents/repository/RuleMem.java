@@ -6,7 +6,6 @@ import ru.job4j.accidents.model.Rule;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
-@Repository
 public class RuleMem implements RuleRepository {
 
     private final Map<Integer, Rule> rules = new ConcurrentHashMap<>() {

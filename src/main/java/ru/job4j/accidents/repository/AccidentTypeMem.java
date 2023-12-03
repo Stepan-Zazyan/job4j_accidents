@@ -5,10 +5,10 @@ import ru.job4j.accidents.model.AccidentType;
 
 import java.util.Collection;
 import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
-@Repository
 public class AccidentTypeMem implements AccidentTypeRepository {
 
     private final AtomicInteger id = new AtomicInteger(3);
@@ -34,7 +34,7 @@ public class AccidentTypeMem implements AccidentTypeRepository {
     }
 
     @Override
-    public AccidentType findById(int id) {
-        return accidentTypes.get(id);
+    public Optional<AccidentType> findById(int id) {
+        return Optional.ofNullable(accidentTypes.get(id));
     }
 }
