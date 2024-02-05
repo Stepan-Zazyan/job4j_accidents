@@ -24,7 +24,7 @@ public class AccidentController {
 
     @GetMapping("/accidentListPage")
     public String viewAccidentList(Model model) {
-        model.addAttribute("accidents", accidentService.findAll());
+        model.addAttribute("accidents", accidentService.getAll());
         model.addAttribute("rules", ruleService.findAll());
         return "accident/accidentList";
     }

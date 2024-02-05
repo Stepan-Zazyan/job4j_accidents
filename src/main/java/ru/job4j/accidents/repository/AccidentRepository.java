@@ -7,9 +7,9 @@ import java.util.Optional;
 
 public interface AccidentRepository {
 
-    Collection<Accident> findAll();
+    Collection<Accident> getAll();
 
-    Optional<Accident> findById(int id);
+    Optional<Accident> findById(Integer id);
 
     Accident create(Accident accident);
 

@@ -22,7 +22,7 @@ public class AccidentJdbcTemplate implements AccidentRepository {
         return accident;
     }
 
-    public List<Accident> findAll() {
+    public List<Accident> getAll() {
         return jdbc.query("select id, name, text, address from accidents",
                 (rs, row) -> {
                     Accident accident = new Accident();
@@ -35,7 +35,7 @@ public class AccidentJdbcTemplate implements AccidentRepository {
     }
 
     @Override
-    public Optional<Accident> findById(int id) {
+    public Optional<Accident> findById(Integer id) {
         return Optional.ofNullable(jdbc.queryForObject("select id, name, text, address from accidents where id = ?",
                 (resultSet, rowNum) -> {
                     Accident accident = new Accident();
