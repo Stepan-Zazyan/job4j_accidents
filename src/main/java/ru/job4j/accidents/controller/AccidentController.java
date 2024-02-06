@@ -6,9 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.job4j.accidents.model.Accident;
-import ru.job4j.accidents.service.AccidentService;
-import ru.job4j.accidents.service.AccidentTypeService;
-import ru.job4j.accidents.service.RuleService;
+import ru.job4j.accidents.service.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.*;
@@ -18,21 +16,21 @@ import java.util.*;
 @Controller
 @RequestMapping("/accident")
 public class AccidentController {
-    private final AccidentService accidentService;
+    private final AccidentServiceSpringData accidentService;
     private final AccidentTypeService accidentTypeService;
-    private final RuleService ruleService;
+    private final RuleServiceSpringData ruleService;
 
     @GetMapping("/accidentListPage")
     public String viewAccidentList(Model model) {
         model.addAttribute("accidents", accidentService.getAll());
-        model.addAttribute("rules", ruleService.findAll());
+        model.addAttribute("rules", ruleService.getAll());
         return "accident/accidentList";
     }
 
     @GetMapping("/createAccidentPage")
     public String viewCreateAccident(Model model) {
         model.addAttribute("types", accidentTypeService.findAll());
-        model.addAttribute("rules", ruleService.findAll());
+        model.addAttribute("rules", ruleService.getAll());
         return "accident/createAccident";
     }
 
