@@ -1,8 +1,8 @@
 package ru.job4j.accidents.repository;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 import ru.job4j.accidents.model.Rule;
 
-public interface RuleRepositorySpringData extends CrudRepository<Rule, Integer> {
+public interface RuleRepositorySpringData extends JpaRepository<Rule, Integer> {
 }
 

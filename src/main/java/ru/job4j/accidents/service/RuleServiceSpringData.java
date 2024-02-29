@@ -20,7 +20,7 @@ public class RuleServiceSpringData {
     }
 
     public List<Rule> getAll() {
-        return (List<Rule>) ruleRepository.findAll();
+        return ruleRepository.findAll();
     }
 
     public Set<Rule> getRulesByIds(String[] arrayOfRules) {

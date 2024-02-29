@@ -20,7 +20,7 @@ public class AccidentServiceSpringData {
     }
 
     public List<Accident> getAll() {
-        return (List<Accident>) accidentRepository.findAll();
+        return accidentRepository.findAll();
     }
 
     public Optional<Accident> findById(int id) {
