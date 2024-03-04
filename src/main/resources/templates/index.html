@@ -25,9 +25,15 @@
             <div>
                 <a class="nav-link text-secondary me-3" href="#" th:text="${user}"></a>
             </div>
+
         </div>
     </div>
 </nav>
 <body>
+<div class="container">
+<div>
+    Login as : <tr><td  th:text="${user.username}"></td></tr>
+</div>
+</div>
 </body>
 </html>
