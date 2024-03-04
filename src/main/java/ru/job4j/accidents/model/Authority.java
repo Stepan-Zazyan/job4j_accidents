@@ -6,31 +6,23 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.util.Objects;
 
-@Getter
 @Setter
+@Getter
 @Entity
-@Table(name = "users")
-public class User {
+@Table(name = "authorities")
+public class Authority {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    private String password;
-
-    private String username;
-
-    @ManyToOne
-    @JoinColumn(name = "authority_id")
-    private Authority authority;
-
-    private boolean enabled;
+    private String authority;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return id == user.id;
+        Authority authority = (Authority) o;
+        return id == authority.id;
     }
 
     @Override
