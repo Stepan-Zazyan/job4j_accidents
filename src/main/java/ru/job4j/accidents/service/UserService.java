@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 import ru.job4j.accidents.model.User;
 import ru.job4j.accidents.repository.UserRepositorySpringData;
 
+import java.util.Optional;
+
 @Service
 @AllArgsConstructor
 public class UserService {
@@ -18,8 +20,9 @@ public class UserService {
         }
     }
 
-    public void save(User user) {
+    public Optional<User> save(User user) {
         userRepository.save(user);
+        return Optional.of(user);
     }
 
 }
