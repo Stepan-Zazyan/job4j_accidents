@@ -5,6 +5,8 @@ import ru.job4j.accidents.model.Rule;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class RuleMem implements RuleRepository {
 
@@ -23,11 +25,10 @@ public class RuleMem implements RuleRepository {
 
     @Override
     public Set<Rule> getRulesByIds(String[] arrayOfIds) {
-        Set<Rule> ruleSet = new HashSet<>();
-        for (int i = 1; i <= arrayOfIds.length; i++) {
-            ruleSet.add(rules.get(i));
-        }
-        return ruleSet;
+        return Stream.of(rules)
+                .flatMap(s-> s.values().stream())
+                .filter(t -> Arrays.stream(arrayOfIds).anyMatch(e -> t.getName().contains(e)))
+                .collect(Collectors.toSet());
     }
 
 
