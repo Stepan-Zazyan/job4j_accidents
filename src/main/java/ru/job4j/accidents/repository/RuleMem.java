@@ -1,6 +1,5 @@
 package ru.job4j.accidents.repository;
 
-import org.springframework.stereotype.Repository;
 import ru.job4j.accidents.model.Rule;
 
 import java.util.*;
@@ -26,7 +25,7 @@ public class RuleMem implements RuleRepository {
     @Override
     public Set<Rule> getRulesByIds(String[] arrayOfIds) {
         return Stream.of(rules)
-                .flatMap(s-> s.values().stream())
+                .flatMap(s -> s.values().stream())
                 .filter(t -> Arrays.stream(arrayOfIds).anyMatch(e -> t.getName().contains(e)))
                 .collect(Collectors.toSet());
     }

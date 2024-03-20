@@ -23,7 +23,7 @@ class AccidentControllerTest {
     @Test
     @WithMockUser
     void viewAccidentList() throws Exception {
-        this.mockMvc.perform(get("/accidentListPage"))
+        this.mockMvc.perform(get("/accident/accidentListPage"))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(view().name("accident/accidentList"));
@@ -32,7 +32,7 @@ class AccidentControllerTest {
     @Test
     @WithMockUser
     void viewCreateAccident() throws Exception {
-        this.mockMvc.perform(get("/createAccidentPage"))
+        this.mockMvc.perform(get("/accident/createAccidentPage"))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(view().name("accident/createAccident"));
@@ -43,7 +43,7 @@ class AccidentControllerTest {
     @WithMockUser
     void viewUpdateAccident() throws Exception {
         int id = 1;
-        this.mockMvc.perform(get("/updateAccidentPage/{id}", id))
+        this.mockMvc.perform(get("/accident/updateAccidentPage/{id}", id))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(view().name("accident/updateAccident"));

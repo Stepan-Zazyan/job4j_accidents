@@ -34,7 +34,7 @@ public class AccidentServiceSpringData {
         accidentToBeUpdated.setType(accident.getType());
         accidentToBeUpdated.setAddress(accident.getAddress());
         accidentToBeUpdated.setRules(accident.getRules());
-        return !accident.equals(accidentToBeUpdated);
+        return accident.equals(accidentToBeUpdated);
     }
 
 }
