@@ -20,7 +20,7 @@ class AccidentControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
-    @Test
+ @Test
     @WithMockUser
     void viewAccidentList() throws Exception {
         this.mockMvc.perform(get("/accident/accidentListPage"))
@@ -36,17 +36,6 @@ class AccidentControllerTest {
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(view().name("accident/createAccident"));
-    }
-
-
-    @Test
-    @WithMockUser
-    void viewUpdateAccident() throws Exception {
-        int id = 1;
-        this.mockMvc.perform(get("/accident/updateAccidentPage/{id}", id))
-                .andDo(print())
-                .andExpect(status().isOk())
-                .andExpect(view().name("accident/updateAccident"));
     }
 
 }

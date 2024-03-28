@@ -34,4 +34,5 @@ public class Accident {
             inverseJoinColumns = { @JoinColumn(name = "rules_id") }
     )
     private Set<Rule> rules = new HashSet<>();
+
 }
