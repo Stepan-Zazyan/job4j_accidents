@@ -14,15 +14,9 @@ public class UserService {
 
     private final UserRepositorySpringData userRepository;
 
-    public void existsByUsername(String name) {
-        if (userRepository.existsByUsername(name)) {
-            throw new IllegalArgumentException("Пользователь с таким именем уже существует");
-        }
-    }
-
     public Optional<User> save(User user) {
-        userRepository.save(user);
-        return Optional.of(user);
+        return userRepository.existsByUsername(user.getUsername())
+                ? Optional.empty() : Optional.of(user);
     }
 
 }
