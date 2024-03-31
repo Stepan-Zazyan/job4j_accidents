@@ -1,5 +1,6 @@
 package ru.job4j.accidents.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,12 +11,17 @@ import java.util.Objects;
 @Getter
 @Entity
 @Table(name = "authorities")
+@AllArgsConstructor
 public class Authority {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     private String authority;
+
+    public Authority() {
+
+    }
 
     @Override
     public boolean equals(Object o) {

@@ -1,5 +1,6 @@
 package ru.job4j.accidents.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,6 +11,7 @@ import java.util.Objects;
 @Setter
 @Entity
 @Table(name = "users")
+@AllArgsConstructor
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,6 +26,10 @@ public class User {
     private Authority authority;
 
     private boolean enabled;
+
+    public User() {
+
+    }
 
     @Override
     public boolean equals(Object o) {
